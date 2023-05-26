@@ -1,0 +1,8 @@
+# CPP
+*.o
+
+# Mac OS X
+.DS_Store
+
+# VS Code
+.vscode/
