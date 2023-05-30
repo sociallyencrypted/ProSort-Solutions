@@ -28,32 +28,14 @@ int main(){
         ll x;
         int k;
         cin >> x >> k;
-        ll rem = x%sum;
-        if (rem==0){
-            if (k==1){
-                cout << n << endl;
-            }
-            else{
-                cout << k-1 << endl;
-            }
+        k--;
+        x += cumulSum[k];
+        x %= cumulSum[n];
+        if (x == 0) {
+            cout << n << endl;
+            continue;
         }
-        else{
-            if (rem<=a[k-1]){
-                cout<<k<<endl;
-            }
-            else{
-                int low = 0;
-                int high = n - 1;
-                while (low <= high) {
-                    int mid = low + (high - low) / 2;
-                    if (cumulSum[mid] >= rem) {
-                        high = mid - 1;
-                    } else {
-                        low = mid + 1;
-                    }
-                }
-                cout << low + 2 << endl;
-            }
-        }
+        int ans = lower_bound(cumulSum.begin(),cumulSum.end(),x) - cumulSum.begin();
+        cout << ans << endl;
     }
 }
